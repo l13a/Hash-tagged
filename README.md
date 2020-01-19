@@ -1,5 +1,4 @@
 # Hashtagged
-Starter Hacks 2020 Project
 
 'ReadTweet.py' is the python program that sorts and clean the data set for which you want to analyze
 
