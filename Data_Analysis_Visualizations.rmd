@@ -1,0 +1,49 @@
+---
+title: "Public Views on Mental Health"
+author: "Jasper Mai, Xinyi Chen"
+subtitle: "A tool that analyzes public opinions on a certain topic through Twitter"
+output:
+  ioslides_presentation: default
+  beamer_presentation: default
+  widescreen: yes
+---
+
+```{r, echo=FALSE, warning =FALSE, message = FALSE}
+library(tidyverse)
+twitter_data <- read_csv("Twitter1.csv")
+twitter_data = twitter_data[-1,]
+
+mresults <- read_csv("mresults.csv")
+sresults <- read_csv("sresults.csv")
+
+
+twitter_data <- twitter_data %>%
+  rename(Favorites = X10)
+
+twitter_data <- twitter_data %>%
+  arrange(desc(Favorites))
+```
+
+## Top 30 words v.s. num of occurrences (#mentalhealth)
+```{r, warning = FALSE, echo = FALSE, message = FALSE, fig.width=8}
+mresults %>%
+  ggplot(df, mapping =aes(x=Word, y= Frequency))+
+  geom_bar(fill = "#5266ff", stat = "identity") + coord_flip()
+```
+
+
+## Top 30 words v.s. num of occurrences (#stress)
+```{r, warning = FALSE, echo = FALSE, message = FALSE, fig.width=8}
+sresults %>%
+  ggplot(df, mapping =aes(x=Word, y= Frequency))+
+  geom_bar(fill = "#5266ff", stat = "identity") + coord_flip()
+```
+
+## Distribution of Favorites Received
+```{r, warning = FALSE, echo = FALSE, message = FALSE, fig.width=8}
+twitter_data %>% 
+  filter(!is.na(Favorites)) %>%
+  filter(Favorites < 80) %>%
+  ggplot(aes(x = Favorites)) + geom_bar() + labs(x= "Favorites Received", y="Count")
+```
+
