@@ -1,5 +1,7 @@
 # Hashtagged
 
+Hashtagged is a program that aids sociology research on public attitude for different topics. IT scrapes Twitter data from the past two months, and visualize and analyze the frequency distributions of hastags used in them. 
+
 'ReadTweet.py' is the python program that sorts and clean the data set for which you want to analyze
 
 'Determiners.txt' is the list of filler words or other words that we chose to ignore in our data
